@@ -55,7 +55,7 @@ export default function CreatorCard({
           {/* Timer */}
           <div className="bg-black/50 border-2 border-purple-500/50 rounded-xl p-6">
             <p className="text-white font-bold text-center mb-4 text-lg">
-              ⏰ Expiration de l&apos;accès gratuit :
+              ⏰ Expiration de l&apos;abonnement gratuit :
             </p>
             <CountdownTimer />
           </div>
