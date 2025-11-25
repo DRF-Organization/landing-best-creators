@@ -170,8 +170,8 @@ export default function Home() {
           rel="noopener noreferrer"
           className="block w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-gray-900 font-bold text-lg py-4 px-6 rounded-full text-center transition-all transform hover:scale-105 shadow-lg hover:shadow-pink-500/50 mb-4"
         >
-          <span className="flex items-center justify-center gap-2">
-            💬 Viens discuter avec moi (gratuit) 💘
+          <span className="flex items-center justify-center gap-2 whitespace-nowrap">
+            Viens discuter avec moi (gratuit) 💘
           </span>
         </a>
 
