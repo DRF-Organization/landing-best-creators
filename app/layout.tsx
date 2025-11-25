@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Les Meilleurs Créateurs Français d'Octobre 🏆",
-  description: "Découvrez le classement complet des meilleurs créateurs de contenu français du mois ! Camille et Violette en tête du top.",
+  title: "Camille ❤️",
+  description: "Coucou moi c'est Camille",
 };
 
 export default function RootLayout({

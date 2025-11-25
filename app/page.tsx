@@ -89,7 +89,7 @@ export default function Home() {
       <div className="max-w-lg mx-auto px-4 py-8">
         {/* Title */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 whitespace-nowrap">
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 whitespace-nowrap">
             Coucou moi c&apos;est Camille ❤️
           </h1>
           <div className="flex items-center justify-center gap-2 text-sm text-gray-300">
