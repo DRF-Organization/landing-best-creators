@@ -17,6 +17,7 @@ export default function Home() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [city, setCity] = useState("Tangier");
+  const [isWiggling, setIsWiggling] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
     minutes: 0,
@@ -58,6 +59,26 @@ export default function Home() {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
+
+  // Wiggle animation for CTA button
+  useEffect(() => {
+    // Trigger first wiggle after 2 seconds
+    const initialTimeout = setTimeout(() => {
+      setIsWiggling(true);
+      setTimeout(() => setIsWiggling(false), 650);
+    }, 2000);
+
+    // Then wiggle every 5 seconds
+    const wiggleInterval = setInterval(() => {
+      setIsWiggling(true);
+      setTimeout(() => setIsWiggling(false), 650);
+    }, 5000);
+
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(wiggleInterval);
+    };
+  }, []);
 
   // Countdown timer to midnight
   useEffect(() => {
@@ -163,17 +184,40 @@ export default function Home() {
           </p>
         </div>
 
-        {/* CTA Button */}
-        <a
-          href="https://onlyfans.com/itsscamille/c66"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-gray-900 font-bold text-lg py-4 px-6 rounded-full text-center transition-all transform hover:scale-105 shadow-lg hover:shadow-pink-500/50 mb-4"
-        >
-          <span className="flex items-center justify-center gap-2 whitespace-nowrap">
-            Viens discuter avec moi (gratuit) 💘
-          </span>
-        </a>
+        {/* CTA Button with animation */}
+        <div className="relative mb-4">
+          {/* Indicator arrow */}
+          <div className="flex justify-center mb-2 animate-bounce-subtle">
+            <span className="text-2xl">👇</span>
+          </div>
+          
+          <a
+            href="https://onlyfans.com/itsscamille/c66"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-gray-900 font-bold text-lg py-4 px-6 rounded-full text-center transition-colors shadow-lg hover:shadow-pink-500/50 cta-button ${
+              isWiggling ? "animate-wiggle" : ""
+            }`}
+            style={{
+              transform: isWiggling ? undefined : "scale(1)",
+              transition: isWiggling ? "none" : "transform 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              if (!isWiggling) {
+                e.currentTarget.style.transform = "scale(1.05)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!isWiggling) {
+                e.currentTarget.style.transform = "scale(1)";
+              }
+            }}
+          >
+            <span className="flex items-center justify-center gap-2 whitespace-nowrap">
+              Viens discuter avec moi (gratuit) 💘
+            </span>
+          </a>
+        </div>
 
         {/* Countdown Timer */}
         <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 mb-8 border border-pink-500/30">
